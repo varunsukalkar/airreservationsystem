@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>B Airways</title>
+    <!-- fontawesome css link -->
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="/assets/font/flaticon.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <!-- nice-select css -->
+    <link rel="stylesheet" href="/assets/css/nice-select.css">
+    <!-- bootstrap css link -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <!-- swipper css link -->
+    <link rel="stylesheet" href="/assets/css/swiper.min.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/assets/images/b_x_icon.png" type="image/x-icon">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <!-- datepicker.css -->
+    <link rel="stylesheet" href="/assets/css/datepicker.min.css">
+    <!-- main style css link -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- responsive css link -->
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+    <!-- seat scss link -->
+    <link rel="stylesheet" href="/assets/css/seats.css">
+    <style>
+        li.lowercase {
+            text-transform: lowercase;
+        }
+        span.lowercase {
+            text-transform: lowercase;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <!--Start Preloader-->
+    <div class="preloader">
+        <div class="d-table">
+            <div class="d-table-cell align-middle">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Preloader-->
+
+    
+        <header class="header-section">
+            <div class="header-top d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 pl-lg-0">
+                            <div class="header-socials">
+                                <ul class="social-links">
+                                    <li><a href="#0"></a></li>
+                                    <li><a href="#0"></a></li>
+                                    <li><a href="#0"></a></li>
+                                    <li><a href="#0"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 d-flex flex-wrap justify-content-end pr-lg-0">
+                            <div class="header-top-btn">
+                                <% if (!user || user.type=='guest') {%>
+                                    <a href="#login" class=" custom-btn-login">Log In</a>
+                                    <a href="#signup" class="custom-btn-register">Create an Account</a>
+                                <%} else{%>
+                                        <a href="/customer/createReview" class=" custom-btn">Add a Review</a>
+                                        <a href="/booking/previous-bookings" class=" custom-btn">Previous Bookings</a>
+                                        <a href="/customer/editProfile" class=" custom-btn">Edit Profile</a>
+                                        <a href="/customer/logout" class=" custom-btn">Log Out</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-middle d-none d-xl-block" style="background-color: white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 pl-lg-0">
+                            <div class="header-wrapper">
+                                <div class="header-info">
+                                    <div class="info-item">
+                                        <div class="info-thumb">
+                                            <i class="flaticon-clock"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <h6 class="title">working hours</h6>
+                                            <span>24/7 hours</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-thumb">
+                                            <i class="flaticon-pin"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <h6 class="title">location</h6>
+                                            <span> Melbourne, Victoria, Australia</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-thumb">
+                                            <i class="flaticon-mail"></i>
+                                        </div>
+                                        <div class="info-content">
+                                            <h6 class="title">email address</h6>
+                                            <span class="lowercase">info@bairways.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 pr-lg-0">
+                            <div class="header-action d-flex flex-wrap align-items-center justify-content-end">
+                                <a href="/customer/ViewFlights" class="cmn-btn-active">Book now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom" style="background-color: white">
+                <div class="container">
+                    <div class="row header-border align-items-center justify-content-between">
+                        <a class="site-logo site-title" href="/"><img src="/assets/images/b_airways_logo.png" alt="site-logo"></a>
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="fas fa-bars"></span>
+                        </button>
+                        <div class="header-bar d-lg-none">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="header-btn-group d-lg-none">
+                            <% if (!user || user.type=='guest') {%>
+                            <div class="header-top-btn">
+                                <a href="#login" class=" custom-btn-login">Log in</a>
+                                <a href="#signup" class="custom-btn-register">Create an account</a>
+                            </div>
+                            <%} else{%>
+                                <a href="/customer/logout" class=" custom-btn">Log Out</a>
+                            <% } %>
+                        </div>
+                        <nav class="navbar navbar-expand-lg p-0">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav main-menu ml-auto">
+                                    <li class="menu_has_children"><a href="/">Home</a>
+                                    </li>
+                                    <li class="menu_has_children"><a href="#0">Flight<i class="fas fa-caret-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/customer/ViewFlights">Search Flight</a></li>
+                                            <li><a href="/aircraftDetails">Aircraft Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>

@@ -1,0 +1,84 @@
+
+<%- include('_staff_header_general',{user}) %>
+<div class="hold-transition sidebar-mini">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3>Information</h3>
+                </br>
+                <% if (error) {%>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <%=error%>
+                    </div>
+                <% } %>
+
+                <% if (success) {%>
+                    <div class="alert alert-success text-center" role="alert">
+                        <%=success%>
+                    </div>
+                <% } %>
+                <div id="accordion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            General Details
+                          </button>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <li>Model name: <%= moreInfoGeneral.model_name %></li>
+                          <li>Variant: <%= moreInfoGeneral.variant %></li>
+                          <li>Economic Seat Capacity: <%= moreInfoGeneral.economy_seat_capacity %></li>
+                          <li>Business Seat Capacity: <%= moreInfoGeneral.business_seat_capacity %></li>
+                          <li>Platinum Seat Capacity: <%= moreInfoGeneral.platinum_seat_capacity %></li>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Passenger Details
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                      <th scope="col">Seat id</th>
+                                      <th scope="col">Passenger name</th>
+                                      <th scope="col">Passenger passport</th>
+                                      <th scope="col">Booked person name</th>
+                                      <th scope="col">Booked person email</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                        <% for (var i = 0; i <moreInfoPassenger.length; i++) { %>
+                                            <tr>
+                                            <th scope="row"><%= moreInfoPassenger[i].seat_id %></th>
+                                            <td><%= moreInfoPassenger[i].passenger_name %></td>
+                                            <td><%= moreInfoPassenger[i].passenger_passport %></td>
+                                            <td><%= moreInfoPassenger[i].booked_name %></td>
+                                            <td><%= moreInfoPassenger[i].email %></td>
+                                            </tr>
+                                        <% } %>
+                                  </tbody>
+                              </table>
+                        </div>
+                      </div>
+                </div>
+
+
+
+            </div><!--card body end-->
+          </div><!--card end-->
+    </div><!--container div closed-->
+</div>
+<%- include('_staff_footer') %>
+
+

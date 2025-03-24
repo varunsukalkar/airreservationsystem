@@ -1,0 +1,337 @@
+<!-- header-section start -->
+<%- include('_header',{user}) %>
+<!-- header-section end -->
+<!-- register-section start -->
+<%- include('_signup',{user,registrationError}) %>
+<!-- register-section end -->
+<!-- login-section start -->
+<%- include('_login',{user}) %>
+<!-- login-section end -->
+
+
+    <form class="header-form">
+        <div class="skip"><i class="fas fa-times"></i></div>
+        <div class="header-form-area">
+            <input type="text" placeholder="Search Here">
+            <button type="submit"><i class="flaticon-search-interface-symbol"></i></button>
+        </div>
+    </form>
+
+
+    <!-- banner-section start -->
+    <section class="inner-banner-section pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="inner-banner-content">
+                        <h2 class="title">search flight</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner-section end -->
+
+
+    <!-- breadcrumb-section start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">Flight</li>
+                            <li class="breadcrumb-item active" aria-current="page">Search</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-section end -->
+
+
+    <a href="#" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+
+
+    <!-- search-widget-area start -->
+
+<section id="search">
+
+    <form id="form">
+        <div class="search-widget-area pt-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="search-widget">
+
+                            <div class="rt-input-group rt-input-group--style">
+                                <div class="single-input  col-rt-in-3">
+                                    <select name="from" id="dropdown" class="select-bar">
+
+                                        <% if(from===undefined || from=='') {%>
+                                        <option value='' selected>--Select FROM Airport--</option>
+                                        <%} else{%>
+                                            <option value='' >--Select FROM Airport--</option>
+                                        <%}%>
+
+                                        <% if(airports && airports.length!=0) {%>
+                                            <% airports.forEach(function(airport){%>
+                                                <% if(from ===airport.airport_code) {%>
+                                                <option value=<%=airport.airport_code %> selected ><%= airport.name %></option>
+                                                <%} else{%>
+                                                    <option value=<%=airport.airport_code %> ><%= airport.name %></option>
+                                                <%}
+                                            });%>
+                                        <%}%>
+                                    </select>
+
+                                    <span class="input-iconbadge"><img src="/assets/images/icon-1.png" alt=""
+                                            draggable="false"></span>
+                                </div>
+
+                                <div class="single-input  col-rt-in-3">
+                                    <select name="to" id="dropdown" class="select-bar">
+                                        <% if(to===undefined || to=='') {%>
+                                            <option value='' selected>--Select TO Airport--</option>
+                                        <%} else{%>
+                                            <option value='' >--Select TO Airport--</option>
+                                        <%}%>
+
+                                        <% if(airports && airports.length!=0) {%>
+                                            <% airports.forEach(function(airport){%>
+                                                <% if(to ===airport.airport_code) {%>
+                                                    <option value=<%=airport.airport_code %> selected ><%= airport.name %></option>
+                                                <%} else{%>
+                                                    <option value=<%=airport.airport_code %> ><%= airport.name %></option>
+                                                <%}
+                                            });%>
+                                        <%}%>
+                                    </select>
+                                    <div class="suggestions"></div>
+                                    <span class="input-iconbadge"><img src="/assets/images/icon-1.png" alt=""
+                                            draggable="false"></span>
+                                </div>
+                            </div>
+
+                            <div class="rt-input-group rt-input-group--style">
+                                <div class="single-input  col-rt-in-4">
+                                    <input type='text' id="booking_date_from" name="booking_date_from"
+                                        class='datepicker-here' data-language='en' placeholder="Departure Date">
+                                    <span class="input-iconbadge"><img src="/assets/images/icon-2.png" alt=""
+                                            draggable="false"></span>
+                                </div>
+
+                                <div class="single-input  col-rt-in-3">
+                                    <form id="mform">
+                                        <button type="submit" value="Submit " class="cmn-btn">Search</button>
+                                    </form>
+                                </div>
+                                <div class="text-secondary">
+                                    Current UTC Time : <%=new Date().toUTCString().slice(0, -3)%>
+                            
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+    
+    <!-- search-widget-area end -->
+    
+
+    <!-- flight-table-area start -->
+    <div class="flight-table-area pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="table-area">
+                        <table class="table table-striped table-bordered table-hover">
+                            <% if(allFlights && allFlights.length!=0) {%>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">FLIGHT</th>
+                                        <th scope="col">FROM</th>
+                                        <th scope="col">TAKEOFF IN UTC TIME</th>
+                                        <th scope="col">TO</th>
+                                        <th scope="col">LANDING IN UTC TIME</th>
+                                        <th scope="col">BOOK</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <% allFlights.forEach(function(flight){%>
+
+                                        <tr>
+                                            <td>
+                                                <%=flight.route_id%>
+                                            </td>
+                                            <td>
+                                                <%=flight.origin%>
+                                            </td>
+                                            <td>
+                                                <%= (flight.departure_date).toString().substring(0,15)+" "+flight.departure_time_utc %>
+                                                </td>
+                                                <td>
+                                                    <%=flight.destination%>
+                                                </td>
+                                                <td>
+                                                    <%=(flight.arrival_date).toString().substring(0,15)+" "+flight.arrival_time_utc%>
+                                                </td>
+                                                <td>
+                                                    <form action='/booking' method=post>
+                                                        <div class="single-input  col-rt-in-3" style="justify-content: center;">
+                                                        <button type='submit'
+                                                            class="cmn-btn" style="font-size: smaller;"
+                                                            name='book-button'>Book Flight</button><input type='hidden'
+                                                            name='schedule_id' value='<%=flight.schedule_id%>'></div></form>
+                                                            
+
+
+                                                </td>
+
+                                            </tr>
+                                            <%});%>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                    <div class="row" style="align-items: center;">
+                    <div class="col-md-6">
+                    <a href="#search"><h6 style="color: orangered;">Click here to Search more flights by Date</h6></a>
+                    </div>
+                    <div class="col-md-6">
+                    <a href="/customer/ViewFlights"><h6 style="color: orangered;">Click here to View All Upcoming Flights</h6></a>
+                    </div>
+                    </div>
+                    </div>
+
+                    <% }else{ %>
+                        <div class=" alert alert-danger text-center">
+                                                    <strong><h4>Sorry, No Flights available</h4></strong>
+                                                    <p>There are no flights availabe  <%=booking_date_from? 'on ': ''%> <%=booking_date_from%> <%=from? 'from ': ''%> <%= from%> <%=to? 'to ': ''%> <%= to%>  </p>
+                                                    <a href="#upcomingFlights"><p style="color: red;">Click here to View Upcoming Flights</p></a>
+                    </div>
+                    <%}%>
+
+                        <!-- flight-table-area end -->
+
+                    
+                        <!-- flight-section start -->
+                        <% if(upcomingFlights && upcomingFlights.length!=0) {%>
+                            <section class="flight-section pt-120 pb-120" id="upcomingFlights">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6 text-center">
+                                            <div class="section-header">
+                                                <h2 class="section-title">Upcoming Flights</h2>
+                                                <span class="title-border title-border-center"></span>
+                                                <p> Stop Searching. Start Traveling.
+                                                    The Airline That’s Different and Better.<br/> Our Airline is More Than Planes. It’s People. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mb-30-none">
+                                    <% upcomingFlights.forEach(function(flight){%>
+
+
+                                        <div class="col-lg-4 col-md-6 col-sm-8 mb-30">
+                                            <div class="flight-item">
+                                                <div class="flight-thumb">
+                                                    <img src="<%= flight.destination_image %> " width="350px" height="259px"  alt="image">
+                                                    <h3 class="flight-overlay">from$<%=flight.price%>
+                                                    </h3>
+                                                </div>
+                                                <div class="flight-details">
+                                
+                                                    <form action="/booking" method="post">
+                                                    <input type="hidden" name="schedule_id" value="<%=flight.schedule_id%>"/>
+                    
+                                                    <button type="submit" style="background-color: white;">
+                                                    <a>
+                                                        <h3 class="title">
+                                                            <%=flight.origin%>
+                                                        </h3>
+                                                        <i class="flaticon-exchange"></i>
+                                                        <h3 class="title">
+                                                            <%=flight.destination%>
+                                                        </h3>
+                                                    </a>
+                                                    </button>
+                                                    </form>
+                                                    <ul class="flight-content">
+                                                        <li><i class="flaticon-clock"></i>
+                                                            <%=flight.departure_time_utc.toString()+'-----'+flight.arrival_time_utc.toString()%>
+                                                        </li>
+                                                        <li><i class="flaticon-calendar"></i>
+                                                            <%=flight.departure_date.toString().substring(0,15)+'-'+flight.arrival_date.toString().substring(0,15)%>
+                                                        </li>
+                                                        <li><i class="flaticon-plane"></i> B Airways</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%});%>
+                                </div>
+                                <% }else{ %>
+                                    <div class="alert alert-warning text-center">
+                                        <strong>No Flights available</strong>
+                                    </div>
+                                    <%}%>
+
+                                        <!-- flight-section end -->
+
+
+                                        <!-- client-section start -->
+                                        <% if(reviews && reviews.length!=0) {%>
+                                        <section class="client-section--style pt-120 pb-120">
+                                            <div class="container">
+                                                
+                                                <div class="row justify-content-center">
+                                                    <div class="col-lg-12">
+                                                        <div class="client-slider--style">
+                                                            <div class="swiper-wrapper">
+                                                                <% reviews.forEach(function(review){%>
+                                                                <div class="swiper-slide">
+                                                                    <div class="client-item--style d-flex flex-wrap">
+                                                                        <div class="client-thumb--style">
+                                                                            <img src="/assets/images/b_x_icon.png"
+                                                                                alt="image">
+                                                                        </div>
+                                                                        <div class="client-content--style">
+                                                                            <p><%= review.review %> 
+                                                                            </p>
+                                                                            <div class="client-header">
+                                                                                <h3 class="title"><%= review.first_name %> <%= review.last_name %> </h3>
+                                                                                <span class="sub-title"><%= review.category %> Flyer of B Airways</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <%});%>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                                <%}%>
+
+                                        <!-- client-section end -->
+
+
+                                       
+
+
+                                </div>
+                            </section>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('_footer',{user}) %>

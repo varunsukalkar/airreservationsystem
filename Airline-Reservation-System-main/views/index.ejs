@@ -1,0 +1,313 @@
+    <!-- header-section start -->
+    <%- include('_header',{user}) %>
+    <!-- header-section end -->
+    <!-- register-section start -->
+    <%- include('_signup',{user,registrationError}) %>
+    <!-- register-section end -->
+    <!-- login-section start -->
+    <%- include('_login',{user}) %>
+    <!-- login-section end -->
+
+
+    <form class="header-form">
+        <div class="skip"><i class="fas fa-times"></i></div>
+        <div class="header-form-area">
+            <input type="text" placeholder="Search Here">
+            <button type="submit"><i class="flaticon-search-interface-symbol"></i></button>
+        </div>
+    </form>
+
+
+    <!-- banner-section start -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="banner-content">
+                        <h2 class="title">book your air ticket easy & fast</h2>
+                        <p>Stop Searching.  Start Traveling.  The airline that’s different and better.
+                        <br/>
+                        Register with Us to Enjoy Amazing Discounts on Bookings!</p>
+                        <div class="btn-area">
+                            <a href="/about" class="cmn-btn">about us</a>
+                            <a href="/contact" class="cmn-btn-active">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner-section end -->
+
+
+    <a href="#" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+
+
+    <!-- search-widget-area start -->
+    <form id="form" action="customer/ViewFlights">
+        <div class="search-widget-area pt-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="search-widget">
+                            
+
+                            <div class="rt-input-group rt-input-group--style">
+                                <div class="single-input  col-rt-in-3">
+                                    <select name="from" id="dropdown" class="select-bar">
+                                        <option value='' selected>--Select FROM Airport--</option>
+                                        <% if(airports && airports.length!=0) {%>
+                                            <% airports.forEach(function(airport){%>
+                                                <option value=<%=airport.airport_code %> ><%= airport.name %>
+                                                </option>
+                                                <%});%>
+                                                    <%}%>
+                                    </select>
+
+                                    <span class="input-iconbadge"><img src="/assets/images/icon-1.png" alt=""
+                                            draggable="false"></span>
+                                </div>
+
+                                <div class="single-input  col-rt-in-3">
+                                    <select name="to" id="dropdown" class="select-bar">
+                                        <option value='' selected>--Select TO Airport--</option>
+                                        <% if(airports && airports.length!=0) {%>
+                                            <% airports.forEach(function(airport){%>
+                                                <option value=<%=airport.airport_code %> ><%= airport.name %>
+                                                </option>
+                                                <%});%>
+                                                    <%}%>
+                                    </select>
+                                    <div class="suggestions"></div>
+                                    <span class="input-iconbadge"><img src="/assets/images/icon-1.png" alt=""
+                                            draggable="false"></span>
+                                </div>
+                            </div>
+
+                            <div class="rt-input-group rt-input-group--style">
+                                <div class="single-input  col-rt-in-4">
+                                    <input type='text' id="booking_date_from" name="booking_date_from"
+                                        class='datepicker-here' data-language='en' placeholder="Departure Date">
+                                    <span class="input-iconbadge"><img src="/assets/images/icon-2.png" alt=""
+                                            draggable="false"></span>
+                                </div>
+
+                                <div class="single-input  col-rt-in-3">
+                                    <form id="mform">
+                                        <button type="submit" value="Submit " class="cmn-btn">Search</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- search-widget-area end -->
+
+
+    <!-- service-section start -->
+    <section class="service-section pt-120">
+        <div class="container">
+            <div class="row justify-content-center mb-30-none">
+                <div class="col-lg-4 col-md-6 col-sm-8 mb-30">
+                    <div class="service-item d-flex flex-wrap">
+                        <div class="service-icon">
+                            <i class="flaticon-startup"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="title">fast & easy booking</h3>
+                            <p>Search for a flight , pick the seats as you wish, complete the payment. It's that easy!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8 mb-30">
+                    <div class="service-item d-flex flex-wrap">
+                        <div class="service-icon">
+                            <i class="flaticon-internet"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="title">any time any where</h3>
+                            <p>Taking you to destinations all around the globe everyday. We’re Going Places!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8 mb-30">
+                    <div class="service-item d-flex flex-wrap">
+                        <div class="service-icon">
+                            <i class="flaticon-audio-headset-of-auriculars-with-microphone-included"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="title">24/7 support</h3>
+                            <p>24/7 online support for your questions and concerns. More than just flying!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- service-section end -->
+
+
+    <!-- about-section start -->
+    <section class="about-section pt-120 pb-120">
+        <div class="container-fluid">
+            <div class="row mb-30-none">
+                <div class="col-lg-6 mb-30">
+                    <div class="about-thumb">
+                        <img src="https://d1.awsstatic.com/industry-images-customer-references/Customer-Reference-industry-Airline-2.6e50b6dd96da57191d1ba60c6f76400f61c0ad4c.png" alt="image">
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-30">
+                    <div class="about-content">
+                        <h2 class="title">We are B Airways</h2>
+                        <span class="title-border"></span>
+                        <p>B Airways is an independant functioning, subsidiary of Virgin Airlines. </p>
+                        <p>B Airways, one of the fastest growing airlines in the world, first began flying in 2017 and currently we are flying to more than 10 destinations all around the globe. Within the past three years we have taken more than 50,000 passengers on a journey of like no other. Come see what you’ve been missing. We at B Airways always go the extra smile to make B Airways your best experience. Last year B Airways was awarded the "Most Outstanding Service" Award by BIA-Colombo.</p>
+                        <a href="/about" class="cmn-btn">discover more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about-section end -->
+
+
+    <!-- flight-section start -->
+    <% if(upcomingFlights && upcomingFlights.length!=0) {%>
+        <div class="flight-section pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <div class="section-header">
+                            <h2 class="section-title">Upcoming Flights</h2>
+                            <span class="title-border title-border-center"></span>
+                            <p> Stop Searching. Start Traveling.
+                                The Airline That’s Different and Better.<br/> Our Airline is More Than Planes. It’s People.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-30-none">
+                <% upcomingFlights.forEach(function(flight){%>
+
+
+                    <div class="col-lg-4 col-md-6 col-sm-8 mb-30">
+                        <div class="flight-item">
+                            <div class="flight-thumb">
+                                <img src="<%= flight.destination_image %> " width="350px" height="259px" alt="image">
+                                <h3 class="flight-overlay">from$<%=flight.price%>
+                                </h3>
+                            </div>
+                            <div class="flight-details">
+                                
+                                <form action="/booking" method="post">
+                                <input type="hidden" name="schedule_id" value="<%=flight.schedule_id%>"/>
+
+                                <button type="submit" style="background-color: white;">
+                                <a>
+                                    <h3 class="title">
+                                        <%=flight.origin%>
+                                    </h3>
+                                    <i class="flaticon-exchange"></i>
+                                    <h3 class="title">
+                                        <%=flight.destination%>
+                                    </h3>
+                                </a>
+                                </button>
+                                </form>
+                                <ul class="flight-content">
+                                    <li><i class="flaticon-clock"></i>
+                                        <%=flight.departure_time_utc.toString()+'-----'+flight.arrival_time_utc.toString()%>
+                                    </li>
+                                    <li><i class="flaticon-calendar"></i>
+                                        <%=flight.departure_date.toString().substring(0,15)+'-'+flight.arrival_date.toString().substring(0,15)%>
+                                    </li>
+                                    <li><i class="flaticon-plane"></i> B Airways</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <%});%>
+            </div>
+            <% }else{ %>
+                <div class="alert alert-warning text-center">
+                    <strong>No Flights available</strong>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    <!-- flight-section end -->
+
+
+
+    <!-- offer-section start -->
+    <section class="offer-section pt-120">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 pl-0 pr-0">
+                    <div class="offer-thunb">
+                        <img src="assets/images/airlinesSITA.jpg" alt="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- offer-section end -->
+
+
+    <!-- client-section start -->
+    <section class="client-section pt-120 pb-120" id="reviews">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-header">
+                        <h2 class="section-title">our happy passengers</h2>
+                        <span class="title-border title-border-center"></span>
+                        <p><b>Are You a Registered Customer of B Airways? We are happy to hear your feedback through <% if (typeof user == 'undefined'){ %>Our Review Page! Register with us to give your reviews.<%} else {%><a href="/customer/createReview" style="color: blue;">Our Review Page!</a><%}%></b></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <% if(reviews && reviews.length!=0) {%>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="client-slider-area">
+                        <div class="client-slider">
+                            <div class="swiper-wrapper">
+                                <% reviews.forEach(function(review){%>
+                                <div class="swiper-slide">
+                                    <div class="client-item d-flex flex-wrap">
+                                        <div class="client-thumb">
+                                            <img src="assets/images/b_x_icon.png" alt="image">
+                                        </div>
+                                        <div class="client-content">
+                                            <h3 class="title"><%= review.first_name %> <%= review.last_name %> </h3>
+                                            <span><%= review.category %> Flyer of B Airways</span>
+                                        </div>
+                                        <p><%= review.review %> </p>
+                        
+                                    </div>
+                                </div>
+                            
+                                <%});%>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%}else{%>
+                <div class="alert  text-center">
+                    <strong>No Reviews Yet!. Add your views and suggestions to improve our service. Thank you.</strong>
+                </div>
+                <%}%>
+
+        </div>
+    </section>
+    <!-- client-section end -->
+
+
+<%- include('_footer',{user}) %>
